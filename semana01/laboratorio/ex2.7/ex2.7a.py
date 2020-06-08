@@ -44,5 +44,3 @@ elif(preco_produto4 <= preco_produto1
     print(f"O {produto4} é o mais barato dentre os produtos. COMPRE ESTE PRODUTO, AGORA!")
 else:
     print(f"O {produto5} é o mais barato dentre os produtos. COMPRE ESTE PRODUTO, AGORA!")
-
-
