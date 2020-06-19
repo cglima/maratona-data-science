@@ -1,0 +1,19 @@
+Faça um programa que pergunte o preço de 5 produtos e informe qual
+produto você deve comprar, sabendo que a decisão é sempre pelo mais barato.
+
+#pergunte o preço de 5 produtos
+
+
+# escolha o mais barato
+
+
+# imprimir o produto que o usuário vai comprar
+
+1. resolver o programa com variaveis primitivas
+2. uma lista unidimensional com preço e nome
+3. uma lista bidimensional com preço e nome <-
+4. duas listas, uma para preço e outra para nome
+5. um dicionário
+6. uma lista de strings
+7. uma lista de objetos
+8. ler de arquivo
