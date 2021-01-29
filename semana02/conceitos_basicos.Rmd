@@ -1,0 +1,284 @@
+---
+title: "conceitos_basicos"
+author: "Cassiana Gabriela Lima Barreto"
+date: "28/01/2021"
+output: html_document
+---
+
+# Conceitos básicos no R
+
+* Declara variaveis com '=' ou '<-'
+* 'print()' para executar na tela
+* 'readline(prompt="...") para receber texto (input)
+
+```{r}
+x = "Heloo Qoda!"
+y <- "Olá Qoda!"
+#z <- readline(prompt = "Qual é o seu nome? ")
+z <- readline("Qual é seu nome? ")
+
+#Print na tela
+print(x)
+print(y)
+
+print(z)
+
+```
+
+# Operadores
+
+* Adição - " + "
+* Subtração - " - "
+* Multiplicação - " * "
+* Exponenciação - " ** "
+* Módulo - " %% " # retorna sobra da divisão
+* Divisão inteiros - " %/% " # retorna parte inteira da divisão
+
+```{r}
+a <- 100
+b <- 40 
+
+soma = a + b 
+subtrai = a - b
+multiplica = a * b 
+expon = a**b
+modulo = a%%b
+inteiro = a%/%b
+
+print(soma)
+print(subtrai)
+print(multiplica)
+print(expon)
+print(modulo)
+print(inteiro)
+
+```
+                                                                                                                                                                                                                                                                                       
+# Estrutura de dados
+
+## Vetor
+
+```{r}
+vetor = 3 
+is.vector(vetor)
+
+```
+
+> Vários elementos em 1 vetor, use c()
+
+```{r}
+vec = c(1,2,3,"texto")
+class(vec) #retorna character pois todos elementos serão do mesmo tipo
+
+```
+
+## Lista
+
+> Trabalha com elementos de tipos diferentes
+
+```{r}
+x <- c("texto", "palavra")
+y <- c(1,2,3)
+z <- c(T,F,T)
+lista = c(x,y,z)
+lista
+
+```
+
+## Matriz
+
+> Todos os elementos são do mesmo tipo 
+
+```{r}
+matriz = matrix(c(1,2), nrow=1,ncol=2,byrow= TRUE)
+matriz
+```
+
+## Dataframe
+
+> Estrutura para armazenar dados em forma de tabela
+
+```{r}
+dados = data.frame(nome = c("Ciana", "Jom", "Tete"),
+                   idade = c(31L, 39L, 64L),
+                   salario = c(4000, 6000, 6500))
+
+nrow(dados) #retorna número de linhas do dataframe
+ncol(dados) #retorna número de colunas do dataframe
+dim(dados) #retorna número de linhas e colunas 
+
+dados
+```
+
+# Condicionais
+
+## Operadores lógicos
+
+* Menor - " < "
+* Maior - " > "
+* Menor ou igual - " <= "
+* Maior ou igual - " >= "
+* Igual - " == " 
+* Diferente - " != "
+* Negação (not) - " ! " 
+
+```{r}
+ 3 > 0
+0 == 0
+a == 1 
+```
+
+## If() 
+
+if (condição) {
+
+  #comandos executados quando TRUE
+
+}
+
+```{r}
+a = 1 
+b = 100
+if(a < b) {
+  print("A é menor que B")
+}
+```
+
+## If else()
+
+if (condição){
+  #comandos executados quando TRUE
+} else {
+  #comandos executados quando FALSE 
+}
+
+```{r}
+a = as.integer(readline("Digite um número para A: "))
+b = as.integer(readline("Digite um número para B: "))
+
+if(a<b){
+  print("A é menor que B")
+} else{
+  print("A é maior que B")
+}
+```
+
+## Ifelse()
+
+ifelse(condição,"retorno se TRUE","retorno se FALSE ")
+
+```{r}
+a = as.integer(readline("Digite um número para A: "))
+b = as.integer(readline("Digite um número para B: "))
+
+ifelse(a>b,"A é maior que B", "A é menor que B")
+```
+
+### Desafio condicionais em R
+
+> Crie um chatbot simples que pergunte ao usuário sua idade.
+  * Caso sua idade esteja compreendida entre 18 anos ou menos, retorne: você é uma criança!
+  * Caso sua idade esteja compreendida entre 19 e 50 anos, retorne: você é um adulto! 
+  * Caso sua idade esteja compreendida entre 51 anos ou mais, retorne: você é um adulto experiente!
+  
+```{r}
+ a = as.integer(readline("Qual a sua idade? "))
+
+if(a <= 18){
+  print("Você é uma criança!")
+} else if ((18 < a && a <= 51)){
+  print("Você é um adulto!")
+} else {
+  print("Você é um adulto experiente!")
+}
+  
+ 
+```
+  
+# Laços de repetição (loops)
+
+## While 
+
+> Enquanto uma condição estiver sendo executada, este laço vai acontecer sempre
+
+```{r}
+#while sintaxe 
+ #while(condicao){
+#   comandos
+# }
+
+z <- 100
+while(z <= 200){
+  print(z)
+  z <- z + 1
+}
+
+```
+
+## For
+
+> Para cada valor de x em uma lista (por exemplo), print x 
+
+```{r}
+# for sintaxe 
+# for (x in y) {
+    #comandos
+#}
+
+for (x in 1:100){
+  print(x)
+}
+```
+
+# Funções
+
+> São blocos de código "encapsulados" os quais armazenam uma lista de
+instruções. Posteriormente, utilizando o nome da função, você a chama
+para execução inserindo alguns parâmetros, se necessário.
+
+ > funções "R base" - são carregadas de forma nativa junto ao R como
+ a função "mean()" que calcula a média, por exemplo, entre outras 
+ diversas:
+ 
+```{r}
+# funções R Base
+ x = c(1,2,3,4,5,6,7,8,9,10)
+
+sd(x) # desvio padrão
+
+mean(x) # média
+
+head(iris) #primeiras linhas dataframe
+
+tail(iris) #ultimas linhas dataframe 
+
+file.choose() #abre pasta para caminho de arquivos
+
+```
+
+
+## Criação de funções
+
+```{r}
+porcentagem <- function(num,por){
+  num <- as.integer(readline(prompt = "Digite o número para cálculo: "))
+  por <- as.integer(readline(prompt = " Agora digite a porcentagem que
+                             gostaria de descobrir deste número: "))
+  return(num * por/100)
+}
+porcentagem()
+```
+
+# Pacotes
+
+> São códigos prontos de terceiros, para solucionar problemas específicos
+ao implementar novas funções ao codigo R. 
+
+Instalando pacotes
+```{r}
+install.packages("ggplot2", dependencies = TRUE)
+
+#carrega pacote para ser utilizado no código
+library(ggplot2)
+```
+
